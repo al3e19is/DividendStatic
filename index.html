@@ -13,6 +13,9 @@
         <div class="jumbotron">
             <h2>派息</h2>
         </div>
+        <p id="todaydate" align="right">
+            
+        </p >
         <p>
             <div id="select_stock"> 股票 
                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="stock" id="stock" onchange="stockSelected()">
@@ -81,6 +84,9 @@
     }
     function startPage(){
         hideAllDiv();
+        var d = new Date();
+        var strDate = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
+        $('#todaydate').html(strDate);
         $('#hsbc_alex').show();
 
     }
@@ -110,11 +116,11 @@
        var chung_get = (chungInput/total*dividend)
        var ma_get = (maInput/total*dividend)
 
-       $(alexBox+'_get').text(alex_get.toFixed(2))
-       $(maBox+'_get').text(ma_get.toFixed(2))
-       $(chungBox+'_get').text(chung_get.toFixed(2))
+       $(alexBox+'_get').text('$'+alex_get.toFixed(2))
+       $(maBox+'_get').text('$'+ma_get.toFixed(2))
+       $(chungBox+'_get').text('$'+chung_get.toFixed(2))
        $('#total_div').text(total)
-       $('#total_get').text(alex_get+chung_get+ma_get);
+       $('#total_get').text( '$'+(alex_get+chung_get+ma_get));
     };
     
     function stockSelected() {
