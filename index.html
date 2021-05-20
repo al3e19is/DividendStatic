@@ -8,27 +8,61 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
 
-<body>
+<body onload="startPage()">
     <div class="container">
         <div class="jumbotron">
             <h2>派息</h2>
         </div>
-
         <p>
-            派$<input type="number" id="dividend" value="0" >  </input>
+            <div id="select_stock"> 股票 
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="stock" id="stock" onchange="stockSelected()">
+                    <option value="hsbc_alex">HSBC(alex)</option>
+                    <option value="pccw_alex">PCCW(alex)</option>
+                    <option value="boc_alex">BOC(alex)</option>
+                    <option value="hsbc_chung">HSBC(chung)</option>
+                    <option value="boc_chung">BOC(chung)</option>
+                </select>
+            </div>
         </p>
+        <p>
+            派  $<input type="number" id="dividend" value="0" >  </input>
+        </p>
+      
         <table class="table table-hover" width="100%" border="true">
-            <tr><td width="20%"></td><td width="20%">股數</td><td width="50%">息</td> </td></tr>
-            <tr><td>123</td><td><input type="number" id="ma" value="0" >  </input></td><td id="ma_get"></td></tr>
-            <tr><td>123</td><td><input type="number" id="chung" value="0"></input></td><td id="chung_get"></td></tr>
-            <tr><td>123</td><td><input type="number" id="alex" value="0" ></input></td><td id="alex_get"></td></tr>
-            <tr><td></td><td id="total_div"></td><td id="total_get"></td></tr>
+                <tr id=><td width="20%"></td><td width="20%">股數</td><td width="50%">息</td> </td></tr>
+                <tbody id="hsbc_alex">
+                    <tr><td>mami</td><td><input type="number" id="hsbc_alex_ma" value="3200" >  </input></td><td id="hsbc_alex_ma_get"></td></tr>
+                    <tr><td>alex</td><td><input type="number" id="hsbc_alex_alex" value="2400" ></input></td><td id="hsbc_alex_alex_get"></td></tr>
+                </tbody>
+              
+                <tbody id="pccw_alex">
+                    <tr><td>mami</td><td><input type="number" id="pccw_alex_ma" value="30000" >  </input></td><td id="pccw_alex_ma_get"></td></tr>
+                    <tr><td>alex</td><td><input type="number" id="pccw_alex_alex" value="30000" ></input></td><td id="pccw_alex_alex_get"></td></tr>
+                </tbody>
+
+                <tbody id="boc_alex">
+                    <tr><td>mami</td><td><input type="number" id="boc_alex_ma" value="80000" >  </input></td><td id="boc_alex_ma_get"></td></tr>
+                    <tr><td>alex</td><td><input type="number" id="boc_alex_alex" value="100000" ></input></td><td id="boc_alex_alex_get"></td></tr>
+                </tbody>
+
+                <tbody id="hsbc_chung">
+                    <tr><td>mami</td><td><input type="number" id="hsbc_chung_ma" value="16000" >  </input></td><td id="hsbc_chung_ma_get"></td></tr>
+                    <tr><td>chung</td><td><input type="number" id="hsbc_chung_chung" value="4000"></input></td><td id="hsbc_chung_chung_get"></td></tr>
+                    <tr><td>alex</td><td><input type="number" id="hsbc_chung_alex" value="5600" ></input></td><td id="hsbc_chung_alex_get"></td></tr>
+                </tbody>
+
+                <tbody id="boc_chung">
+                    <tr><td>mami</td><td><input type="number" id="boc_chung_ma" value="0" >  </input></td><td id="boc_chung_ma_get"></td></tr>
+                    <tr><td>chung</td><td><input type="number" id="boc_chung_chung" value="0"></input></td><td id="boc_chung_chung_get"></td></tr>
+                </tbody>
+
+                <tr><td></td><td id="total_div"></td><td id="total_get"></td></tr>
 
         </table>
 
         <p></p>
 
-        <button onclick="myFunction()"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+        <button onclick="calc()"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
             <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"></path>
             <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"></path>
         </svg>計算</button>
@@ -38,26 +72,60 @@
 </html> 
 
 <script>
-    function myFunction() {
-      var alexInput = parseInt($('#alex').val())
-       var maInput =  parseInt($('#ma').val())
-       var chungInput =  parseInt($('#chung').val())
- 
+  function hideAllDiv(){
+        $('#hsbc_alex').hide();
+        $('#pccw_alex').hide();
+        $('#boc_alex').hide();
+        $('#hsbc_chung').hide();
+        $('#boc_chung').hide();
+    }
+    function startPage(){
+        hideAllDiv();
+        $('#hsbc_alex').show();
+
+    }
+
+    function catchInt(val){
+        if (isNaN(val)) {return 0}
+        else return val;
+    }
+  
+    function calc() {
+       var stock = ($('#stock').val());
+    
+       var stockname = stock+"_";
+       var alexBox = '#'+stockname+'alex';
+       var maBox = '#'+stockname+'ma';
+       var chungBox = '#'+stockname+'chung';
+
+       var alexInput =   catchInt(parseInt($(''+alexBox).val()))
+       var maInput = catchInt( parseInt($(''+maBox).val()))
+       var chungInput = catchInt( parseInt($(''+chungBox).val()))
+      
        var total = alexInput+maInput+chungInput;
        var dividend = $('#dividend').val()
 
-    
-       var alex_get = alexInput/total*dividend;
-       var chung_get = chungInput/total*dividend;
-       var ma_get = maInput/total*dividend;
-       var total_get = maInput/total*dividend;
+      
+       var alex_get = (alexInput/total*dividend)
+       var chung_get = (chungInput/total*dividend)
+       var ma_get = (maInput/total*dividend)
 
-       $('#alex_get').text(alex_get)
-       $('#ma_get').text(ma_get)
-       $('#chung_get').text(chung_get)
+       $(alexBox+'_get').text(alex_get.toFixed(2))
+       $(maBox+'_get').text(ma_get.toFixed(2))
+       $(chungBox+'_get').text(chung_get.toFixed(2))
        $('#total_div').text(total)
        $('#total_get').text(alex_get+chung_get+ma_get);
- 
+    };
+    
+    function stockSelected() {
+        hideAllDiv();
+        var stock = ($('#stock').val());
+        if(stock==="hsbc_alex") {$('#hsbc_alex').show();}
+        if(stock==="pccw_alex") {$('#pccw_alex').show();}
+        if(stock==="boc_alex")  {$('#boc_alex').show();}
+        if(stock==="hsbc_chung"){$('#hsbc_chung').show();}
+        if(stock==="boc_chung") {$('#boc_chung').show();}
     }
+
     </script>
 
