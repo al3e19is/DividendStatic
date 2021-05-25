@@ -22,6 +22,8 @@
                     <option value="hsbc_alex">HSBC(alex)</option>
                     <option value="pccw_alex">PCCW(alex)</option>
                     <option value="boc_alex">BOC(alex)</option>
+                    <option value="hkt_alex">HKT(alex)</option>
+
                     <option value="hsbc_chung">HSBC(chung)</option>
                     <option value="boc_chung">BOC(chung)</option>
                 </select>
@@ -46,6 +48,11 @@
                 <tbody id="boc_alex">
                     <tr><td>mami</td><td><input type="number" id="boc_alex_ma" value="80000" >  </input></td><td id="boc_alex_ma_get"></td></tr>
                     <tr><td>alex</td><td><input type="number" id="boc_alex_alex" value="100000" ></input></td><td id="boc_alex_alex_get"></td></tr>
+                </tbody>
+
+                <tbody id="hkt_alex">
+                    <tr><td>mami</td><td><input type="number" id="hkt_alex_ma" value="50000" >  </input></td><td id="hkt_alex_ma_get"></td></tr>
+                    <tr><td>alex</td><td><input type="number" id="hkt_alex_alex" value="90000" ></input></td><td id="hkt_alex_alex_get"></td></tr>
                 </tbody>
 
                 <tbody id="hsbc_chung">
@@ -81,6 +88,7 @@
         $('#hsbc_alex').hide();
         $('#pccw_alex').hide();
         $('#boc_alex').hide();
+        $('#hkt_alex').hide();
         $('#hsbc_chung').hide();
         $('#boc_chung').hide();
     }
@@ -131,8 +139,13 @@
         if(stock==="hsbc_alex") {$('#hsbc_alex').show();}
         if(stock==="pccw_alex") {$('#pccw_alex').show();}
         if(stock==="boc_alex")  {$('#boc_alex').show();}
+        if(stock==="hkt_alex")  {$('#hkt_alex').show();}
+
         if(stock==="hsbc_chung"){$('#hsbc_chung').show();}
         if(stock==="boc_chung") {$('#boc_chung').show();}
+
+        $('#total_div').text('');
+        $('#total_get').text('');
     }
 
     </script>
